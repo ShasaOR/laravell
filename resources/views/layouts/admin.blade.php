@@ -11,7 +11,7 @@
 
     <title>SB Admin 2 - Dashboard</title>
 
-  
+   @include('includes.style')
 
 </head>
 
@@ -21,7 +21,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-   @include('includes.sidebar')
+    @include('includes.sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -31,18 +31,18 @@
             <div id="content">
 
                 <!-- Topbar -->
-               @include('includes.navbar')
+           @include('includes.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-           @yield('content')
+      @yield('content')
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
-           @include('includes.footer')
+        @include('includes.footer')
             <!-- End of Footer -->
 
         </div>
@@ -76,9 +76,7 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
     @include('includes.script')
-
 
 </body>
 
