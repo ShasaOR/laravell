@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,6 @@ Route::get('/', function () {
 Route::get('/list', function () {
     return view('absen');
 });
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
  
