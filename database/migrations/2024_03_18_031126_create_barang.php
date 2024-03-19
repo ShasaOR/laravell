@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
-            $table->string('produkID');
             $table->string('namaProduk');
-            $table->decimal('hargaProduk', 10, 2);
+            $table->integer('hargaProduk');
             $table->date('tanggal_rilis');
             $table->timestamps();
         });

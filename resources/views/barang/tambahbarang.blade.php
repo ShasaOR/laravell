@@ -5,13 +5,7 @@
 <div class="p-3">
     <form action="/barang" method="POST">
         @csrf
-        <div class="mb-3">
-            <label for="produkID" class="form-label">Produk ID</label>
-            <input type="text" class="form-control" id="produkID" name="produkID" placeholder="Masukkan ID Produk">
-            @error('produkID')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
+        
         <div class="mb-3">
             <label for="namaProduk" class="form-label">Nama Produk</label>
             <input type="text" class="form-control" id="namaProduk" name="namaProduk" placeholder="Masukkan Nama Produk">

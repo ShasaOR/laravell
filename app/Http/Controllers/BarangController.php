@@ -26,15 +26,15 @@ class BarangController extends Controller
     public function simpan(Request $request) // Mengubah 'karyawan' menjadi 'simpan'
     {
         $request->validate([
-            'nama' => 'required',
-            'harga' => 'required',
+            'namaProduk' => 'required',
+            'hargaProduk' => 'required',
             'tanggal_rilis' => 'required|date', // Mengubah 'tanggal_lahir' menjadi 'tanggal_rilis'
         ]);
 
         DB::table('barang')->insert([
-            'nama' => $request->nama,
-            'harga' => $request->harga, // Mengubah 'jabatan' menjadi 'harga'
-            'tanggal_rilis' => $request->tanggal_rilis, // Mengubah 'tanggal_lahir' menjadi 'tanggal_rilis'
+            'namaProduk' => $request-> namaProduk,
+            'hargaProduk' => $request-> hargaProduk, // Mengubah 'jabatan' menjadi 'harga'
+            'tanggal_rilis' => $request-> tanggal_rilis, // Mengubah 'tanggal_lahir' menjadi 'tanggal_rilis'
         ]);
         
         Alert::success('Success', 'Data Berhasil ditambahkan');
@@ -44,7 +44,7 @@ class BarangController extends Controller
     public function show($id) // Mengubah 'show' menjadi 'show'
     {
         $barang = DB::table('barang')->find($id); // Mengubah 'karyawan_tabel' menjadi 'barang'
-        return view('', compact('barang')); // Mengubah 'detailkaryawan' menjadi 'detailbarang'
+        return view('barang.detailbarang', compact('barang')); // Mengubah 'detailkaryawan' menjadi 'detailbarang'
     }
 
     public function edit($id) // Mengubah 'edit' menjadi 'edit'

@@ -12,7 +12,6 @@
         <thead>
             <tr>
                 <th scope="col" class="sortable">No</th>
-                <th scope="col" class="sortable">Produk ID</th>
                 <th scope="col" class="sortable">Nama Produk</th>
                 <th scope="col" class="sortable">Harga Produk</th>
                 <th scope="col" class="sortable">Tanggal Rilis</th>
@@ -24,7 +23,6 @@
             @forelse ($barang as $key => $value)
             <tr>
                 <th scope="row">{{$key + 1}}</th>
-                <td>{{$value->produkID}}</td>
                 <td>{{$value->namaProduk}}</td>
                 <td>{{$value->hargaProduk}}</td>
                 <td>{{$value->tanggal_rilis}}</td>
