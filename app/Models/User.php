@@ -42,4 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //untuk menyimpan kolom role dengan memanggil admin
+    public function isAdmin()
+    {
+        return $this->role == "admin";
+    }
 }

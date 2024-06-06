@@ -14,17 +14,21 @@ class BarangController extends Controller
         $text = 'Apakah anda yakin ingin menghapus?';
         $icon = "Question";
         confirmDelete($title, $text);
+        $showmenu = auth()->user()->isAdmin();
         $barang = DB::table('barang')->get(); // Mengubah 'karyawan_tabel' menjadi 'barang' sesuai dengan nama tabel barang
-        return view('barang.indexbarang', compact('barang')); // Mengubah 'indexkaryawan' menjadi 'indexbarang'
+        return view('barang.indexbarang', compact('barang','showmenu')); // Mengubah 'indexkaryawan' menjadi 'indexbarang'
     }
 
     public function tambahbarang() // Mengubah 'tambahkaryawan' menjadi 'tambahbarang'
-    {
-        return view('barang.tambahbarang'); // Mengubah 'tambahkaryawan' menjadi 'tambahbarang'
+    { 
+        $showmenu = auth()->user()->isAdmin();
+        $barang = DB::table('barang')->get();
+        return view('barang.tambahbarang', compact('barang','showmenu')); // Mengubah 'tambahkaryawan' menjadi 'tambahbarang'
     }
 
     public function simpan(Request $request) // Mengubah 'karyawan' menjadi 'simpan'
     {
+        $showmenu = auth()->user()->isAdmin();
         $request->validate([
             'namaProduk' => 'required',
             'hargaProduk' => 'required',
@@ -42,19 +46,21 @@ class BarangController extends Controller
     }
 
     public function show($id) // Mengubah 'show' menjadi 'show'
-    {
+    { 
+        $showmenu = auth()->user()->isAdmin();
         $barang = DB::table('barang')->find($id); // Mengubah 'karyawan_tabel' menjadi 'barang'
-        return view('barang.detailbarang', compact('barang')); // Mengubah 'detailkaryawan' menjadi 'detailbarang'
+        return view('barang.detailbarang', compact('barang', 'showmenu')); // Mengubah 'detailkaryawan' menjadi 'detailbarang'
     }
 
     public function edit($id) // Mengubah 'edit' menjadi 'edit'
-    {
+    { 
+        $showmenu = auth()->user()->isAdmin();
         $barang = DB::table('barang')->find($id); // Mengubah 'karyawan_tabel' menjadi 'barang'
-        return view('barang.editbarang', compact('barang')); // Mengubah 'editkaryawan' menjadi 'editbarang'
+        return view('barang.editbarang', compact('barang', 'showmenu')); // Mengubah 'editkaryawan' menjadi 'editbarang'
     }
 
     public function update(Request $request, $id) // Mengubah 'update' menjadi 'update'
-    {
+    { 
         $request->validate([
             'nama' => 'required',
             'harga' => 'required',
@@ -72,8 +78,8 @@ class BarangController extends Controller
     }
 
     public function destroy($id) { // Mengubah 'destroy' menjadi 'destroy'
-        $barang = DB::table('barang')->where('id', $id)->delete(); // Mengubah 'karyawan_tabel' menjadi 'barang'
+  $barang = DB::table('barang')->where('id', $id)->delete(); // Mengubah 'karyawan_tabel' menjadi 'barang'
         Alert::success('Success', 'Data Berhasil di Hapus');
-        return redirect('/barang'); // Mengubah '/karyawan' menjadi '/barang'
+        return redirect('/barang', 'showmenu'); // Mengubah '/karyawan' menjadi '/barang'
     }
 }

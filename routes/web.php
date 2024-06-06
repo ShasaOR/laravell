@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('homepage');
+});
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/profile', [ProfileController::class, 'index']);
+Route::get('/homepage', [HomePageController::class, 'index']);
 
 Route::get('/barang', [BarangController::class, 'index']); 
 Route::get('/tambahbarang', [BarangController::class, 'tambahbarang']); 
@@ -25,3 +32,10 @@ Route::get('/barang/{barang_id}', [BarangController::class, 'show']);
 Route::get('/barang/{barang_id}/edit', [BarangController::class, 'edit']); 
 Route::put('/barang/{barang_id}', [BarangController::class, 'update']); 
 Route::delete('/barang/{barang_id}', [BarangController::class, 'destroy']); 
+Auth::routes();
+
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'shawLoginform'])->name('login');
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
