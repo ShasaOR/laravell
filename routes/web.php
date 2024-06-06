@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PenggunaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,5 +38,8 @@ Auth::routes();
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'shawLoginform'])->name('login');
 
 Auth::routes();
+
+Route::get('/Pengguna', [PenggunaController::class, 'index']);
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

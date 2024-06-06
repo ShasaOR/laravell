@@ -15,8 +15,8 @@ class BarangController extends Controller
         $icon = "Question";
         confirmDelete($title, $text);
         $showmenu = auth()->user()->isAdmin();
-        $barang = DB::table('barang')->get(); // Mengubah 'karyawan_tabel' menjadi 'barang' sesuai dengan nama tabel barang
-        return view('barang.indexbarang', compact('barang','showmenu')); // Mengubah 'indexkaryawan' menjadi 'indexbarang'
+        $barang = DB::table('barang')->get();
+        return view('barang.indexbarang', compact('barang','showmenu')); 
     }
 
     public function tambahbarang() // Mengubah 'tambahkaryawan' menjadi 'tambahbarang'
@@ -77,9 +77,10 @@ class BarangController extends Controller
         return redirect('/barang'); // Mengubah '/karyawan' menjadi '/barang'
     }
 
-    public function destroy($id) { // Mengubah 'destroy' menjadi 'destroy'
-  $barang = DB::table('barang')->where('id', $id)->delete(); // Mengubah 'karyawan_tabel' menjadi 'barang'
+    public function destroy($id) // Mengubah 'destroy' menjadi 'destroy'
+    {
+        $barang = DB::table('barang')->where('id', $id)->delete(); 
         Alert::success('Success', 'Data Berhasil di Hapus');
-        return redirect('/barang', 'showmenu'); // Mengubah '/karyawan' menjadi '/barang'
+        return redirect('/barang'); // 
     }
 }
